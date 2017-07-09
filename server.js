@@ -23,7 +23,7 @@ app.use(express.static('public'));
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
-
+// we cannot put a request parameter like this "/new/:term" so we will use this form
 app.get(/new\/(.+)/, function (request, response) {
   if(isUri(request.params[0])){
     links.find({original_url:request.params[0]}).toArray(function(err,docs){
